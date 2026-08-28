@@ -1,5 +1,4 @@
-with Ada.Exceptions;
-
+-- zeller.ads
 package Zeller is
    -- Strong typing for algorithm-specific data
    type Day_Type is new Integer range 1 .. 31;
