@@ -1,3 +1,4 @@
+-- tests.adb
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Assertions; use Ada.Assertions;
 with Zeller; use Zeller;
@@ -74,6 +75,7 @@ begin
    begin
       declare
          Result : Day_Of_Week := Day_Of_Week_Gregorian(29, 2, 1900);
+         pragma Unreferenced (Result);
       begin
          Assert (False, "Expected Invalid_Date not raised");
       end;
@@ -88,6 +90,7 @@ begin
    begin
       declare
          Result : Day_Of_Week := Day_Of_Week_Gregorian(31, 4, 2023);
+         pragma Unreferenced (Result);
       begin
          Assert (False, "Expected Invalid_Date not raised");
       end;
@@ -104,8 +107,8 @@ begin
    
    -- TEST 14 - Invalid Date for Julian vs Gregorian
    Put_Line("TEST 14 - Robustness: Julian accepts 1900-02-29, while Gregorian fails");
-   Put_Line("  14.1 Assert Julian 1900-02-29 calculates to Wednesday");
-   Assert(Day_Of_Week_Julian(29, 2, 1900) = Wednesday, "Julian validation logic flawed");
+   Put_Line("  14.1 Assert Julian 1900-02-29 calculates to Tuesday");
+   Assert(Day_Of_Week_Julian(29, 2, 1900) = Tuesday, "Julian validation logic flawed");
    Put_Line("      PASS");
 
    Put_Line("=========================================");
