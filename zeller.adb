@@ -1,3 +1,4 @@
+-- zeller.adb
 package body Zeller is
 
    -- HELPER: Checks leap year using the Gregorian rules (divisible by 4, but not 100 unless 400)
@@ -48,15 +49,15 @@ package body Zeller is
    function To_ISO(D : Day_Of_Week) return ISO_Day_Of_Week is
       -- Zeller internal: 0=Sat, 1=Sun, 2=Mon, 3=Tue, 4=Wed, 5=Thu, 6=Fri
       -- Target ISO pos: 0=Mon, 1=Tue, 2=Wed, 3=Thu, 4=Fri, 5=Sat, 6=Sun
-      H_Val   : Integer := Day_Of_Week'Pos(D);
-      ISO_Val : Integer := ((H_Val + 5) mod 7);
+      H_Val   : constant Integer := Day_Of_Week'Pos(D);
+      ISO_Val : constant Integer := ((H_Val + 5) mod 7);
    begin
       return ISO_Day_Of_Week'Val(ISO_Val);
    end To_ISO;
 
    -- VARIANT 1: Gregorian Calculation
    function Day_Of_Week_Gregorian (Day : Day_Type; Month : Month_Type; Year : Year_Type) return Day_Of_Week is
-      q : Integer := Integer(Day);
+      q : constant Integer := Integer(Day);
       m : Integer := Integer(Month);
       Y : Integer := Integer(Year);
       K, J, h : Integer;
@@ -75,7 +76,7 @@ package body Zeller is
 
    -- VARIANT 2: Julian Calculation
    function Day_Of_Week_Julian (Day : Day_Type; Month : Month_Type; Year : Year_Type) return Day_Of_Week is
-      q : Integer := Integer(Day);
+      q : constant Integer := Integer(Day);
       m : Integer := Integer(Month);
       Y : Integer := Integer(Year);
       K, J, h : Integer;
